@@ -1,0 +1,674 @@
+/* ⚡ RETRO CYBERPUNK ROBOT ELECTION SYSTEM ⚡ */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Courier+Prime:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --neon-green: #00ff41;
+    --neon-blue: #00d4ff;
+    --neon-purple: #bf00ff;
+    --neon-red: #ff0040;
+    --dark-bg: #0a0a0a;
+    --medium-bg: #1a1a1a;
+    --light-bg: #2a2a2a;
+    --border-glow: #333;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #888888;
+}
+
+body {
+    font-family: 'Orbitron', monospace;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(191, 0, 255, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, var(--dark-bg) 0%, #000000 100%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated matrix-style grid background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: grid-move 20s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes grid-move {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(20px, 20px); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+header h1 {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, var(--neon-green), var(--neon-blue), var(--neon-purple));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+    animation: title-glow 3s ease-in-out infinite alternate;
+    letter-spacing: 2px;
+}
+
+header h1::before {
+    content: '🤖';
+    margin-right: 15px;
+    filter: drop-shadow(0 0 10px var(--neon-green));
+}
+
+header h1::after {
+    content: '🤖';
+    margin-left: 15px;
+    filter: drop-shadow(0 0 10px var(--neon-blue));
+}
+
+header p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.3em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+header p::before {
+    content: '>>> ';
+    color: var(--neon-green);
+    animation: blink 1s infinite;
+}
+
+header p::after {
+    content: ' <<<';
+    color: var(--neon-green);
+    animation: blink 1s infinite;
+}
+
+@keyframes title-glow {
+    from { text-shadow: 0 0 20px rgba(0, 255, 65, 0.5); }
+    to { text-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 40px rgba(191, 0, 255, 0.3); }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Cyberpunk Panels */
+.wallet-section {
+    background: var(--medium-bg);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid var(--neon-blue);
+    box-shadow: 
+        0 0 20px rgba(0, 212, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.wallet-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+    animation: scan-line 3s linear infinite;
+}
+
+.wallet-info {
+    margin-top: 20px;
+    padding: 18px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    color: var(--text-primary);
+}
+
+.wallet-info p {
+    font-family: 'Courier Prime', monospace;
+    margin: 8px 0;
+}
+
+.wallet-info strong {
+    color: var(--neon-green);
+    text-transform: uppercase;
+}
+
+.election-info {
+    background: var(--medium-bg);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid var(--neon-green);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 65, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.election-info::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+    animation: scan-line-reverse 4s linear infinite;
+}
+
+.election-info h2 {
+    font-family: 'Orbitron', monospace;
+    color: var(--neon-blue);
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2em;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+@keyframes scan-line {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes scan-line-reverse {
+    0% { right: -100%; }
+    100% { right: 100%; }
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--light-bg);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.status-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--neon-green);
+    animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.label {
+    font-family: 'Courier Prime', monospace;
+    font-weight: bold;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.status {
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.status.active {
+    color: var(--neon-green);
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+}
+
+.status.inactive {
+    color: var(--neon-red);
+    text-shadow: 0 0 5px rgba(255, 0, 64, 0.5);
+}
+
+.voting-section, .results-section, .teacher-section {
+    background: var(--medium-bg);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid var(--neon-purple);
+    box-shadow: 
+        0 0 20px rgba(191, 0, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.voting-section h3, .results-section h3, .teacher-section h3 {
+    font-family: 'Orbitron', monospace;
+    color: var(--neon-purple);
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(191, 0, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.voting-instruction {
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: 'Courier Prime', monospace;
+}
+
+@keyframes pulse {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+.candidates-list {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+/* Robot Candidates */
+.candidate-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: var(--light-bg);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.candidate-item::before {
+    content: '🤖';
+    position: absolute;
+    left: 15px;
+    font-size: 1.5em;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 5px var(--neon-blue));
+}
+
+.candidate-item:hover {
+    border-color: var(--neon-blue);
+    background: var(--medium-bg);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.candidate-item.selected {
+    border-color: var(--neon-green);
+    background: var(--medium-bg);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+}
+
+.candidate-item.selected::before {
+    filter: drop-shadow(0 0 8px var(--neon-green));
+}
+
+.candidate-item input[type="radio"] {
+    margin-right: 20px;
+    margin-left: 45px;
+    transform: scale(1.3);
+    accent-color: var(--neon-green);
+}
+
+.candidate-info {
+    flex: 1;
+}
+
+.candidate-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--neon-blue);
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+}
+
+.candidate-id {
+    font-family: 'Courier Prime', monospace;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.results-container {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    background: var(--light-bg);
+    border: 1px solid rgba(191, 0, 255, 0.3);
+    border-radius: 10px;
+    position: relative;
+}
+
+.result-item::before {
+    content: '📊';
+    position: absolute;
+    left: 15px;
+    font-size: 1.2em;
+    filter: drop-shadow(0 0 5px var(--neon-purple));
+}
+
+.result-info {
+    flex: 1;
+    margin-right: 20px;
+    margin-left: 35px;
+}
+
+.result-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--neon-purple);
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(191, 0, 255, 0.3);
+}
+
+.result-votes {
+    font-family: 'Courier Prime', monospace;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.progress-bar {
+    flex: 2;
+    height: 24px;
+    background: var(--dark-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-right: 15px;
+    border: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-bg);
+    font-family: 'Orbitron', monospace;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-shadow: none;
+    animation: progress-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes progress-glow {
+    from { box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2); }
+    to { box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.4); }
+}
+
+.teacher-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+/* Cyberpunk Buttons */
+.btn {
+    font-family: 'Orbitron', monospace;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--neon-blue), #0099cc);
+    color: var(--dark-bg);
+    border: 1px solid var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.8);
+}
+
+.btn-vote {
+    background: linear-gradient(45deg, var(--neon-green), #00cc33);
+    color: var(--dark-bg);
+    width: 100%;
+    font-size: 1.2em;
+    padding: 18px;
+    border: 1px solid var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    margin-top: 15px;
+}
+
+.btn-vote:hover:not(:disabled) {
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.6);
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.8);
+}
+
+.btn-success {
+    background: linear-gradient(45deg, var(--neon-green), #00cc33);
+    color: var(--dark-bg);
+    border: 1px solid var(--neon-green);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, var(--neon-red), #cc0033);
+    color: white;
+    border: 1px solid var(--neon-red);
+    box-shadow: 0 0 15px rgba(255, 0, 64, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, var(--text-muted), #666666);
+    color: white;
+    border: 1px solid var(--text-muted);
+    box-shadow: 0 0 10px rgba(136, 136, 136, 0.2);
+}
+
+/* Error and Loading Messages */
+.error-message {
+    background: linear-gradient(45deg, var(--neon-red), #cc0033);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    border: 1px solid var(--neon-red);
+    box-shadow: 0 0 20px rgba(255, 0, 64, 0.3);
+    animation: error-pulse 1s ease-in-out infinite alternate;
+}
+
+.error-message::before {
+    content: '⚠️ ERROR: ';
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+@keyframes error-pulse {
+    from { box-shadow: 0 0 20px rgba(255, 0, 64, 0.3); }
+    to { box-shadow: 0 0 30px rgba(255, 0, 64, 0.5); }
+}
+
+.loading {
+    background: linear-gradient(45deg, var(--neon-blue), #0099cc);
+    color: var(--dark-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    border: 1px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+.loading::before {
+    content: '🤖 PROCESSING... ';
+    animation: blink 0.8s infinite;
+}
+
+@keyframes loading-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.hidden {
+    display: none;
+}
+
+.vote-count {
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    color: var(--neon-green);
+    font-size: 1.2em;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+    background: var(--dark-bg);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    min-width: 50px;
+    text-align: center;
+}
+
+/* Winner Section */
+.winner-section {
+    background: var(--medium-bg);
+    border: 2px solid var(--neon-green);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
+    animation: winner-glow 2s ease-in-out infinite alternate;
+}
+
+.winner-section h4 {
+    font-family: 'Orbitron', monospace;
+    color: var(--neon-green);
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+    text-transform: uppercase;
+}
+
+.winner-details h5 {
+    font-family: 'Orbitron', monospace;
+    color: var(--neon-blue);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+.winner-details p {
+    font-family: 'Courier Prime', monospace;
+    color: var(--text-secondary);
+    font-size: 1.1em;
+}
+
+@keyframes winner-glow {
+    from { box-shadow: 0 0 30px rgba(0, 255, 65, 0.4); }
+    to { box-shadow: 0 0 40px rgba(0, 255, 65, 0.6), 0 0 60px rgba(0, 255, 65, 0.2); }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-controls {
+        grid-template-columns: 1fr;
+    }
+}

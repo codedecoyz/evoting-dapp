@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Representative Election</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.1/ethers.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Class Representative Election</h1>
+            <p>Secure Blockchain-Based CR Voting System</p>
+        </header>
+
+        <div class="wallet-section">
+            <button id="connectWallet" class="btn btn-primary">Connect MetaMask Wallet</button>
+            <div id="walletInfo" class="wallet-info hidden">
+                <p><strong>Connected:</strong> <span id="walletAddress"></span></p>
+                <p><strong>Network:</strong> <span id="networkName"></span></p>
+            </div>
+        </div>
+
+        <div class="election-info hidden" id="electionInfo">
+            <h2 id="className">Loading...</h2>
+            <p id="subjectName" class="subject-name">Loading...</p>
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="label">Status:</span>
+                    <span id="votingStatus" class="status">Loading...</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Total Votes:</span>
+                    <span id="totalVotes">0</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Students Registered:</span>
+                    <span id="totalStudents">0</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Your Status:</span>
+                    <span id="studentStatus">Checking...</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Your Roll Number:</span>
+                    <span id="rollNumber">-</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Voter Turnout:</span>
+                    <span id="voterTurnout">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="voting-section hidden" id="votingSection">
+            <h3>🗳️ Cast Your Vote for CR</h3>
+            <p class="voting-instruction">Select your preferred candidate for Class Representative:</p>
+            <div id="candidatesList" class="candidates-list">
+                <!-- Candidates will be loaded here -->
+            </div>
+            <button id="voteButton" class="btn btn-vote hidden">Cast My Vote</button>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <h3>📊 Live Election Results</h3>
+            <div id="resultsContainer" class="results-container">
+                <!-- Results will be loaded here -->
+            </div>
+            <div id="winnerSection" class="winner-section hidden">
+                <h4>🏆 Current Leader:</h4>
+                <div id="winnerInfo" class="winner-info">
+                    <!-- Winner info will be displayed here -->
+                </div>
+            </div>
+            <button id="refreshResults" class="btn btn-secondary">Refresh Results</button>
+        </div>
+
+        <div class="teacher-section hidden" id="teacherSection">
+            <h3>👨‍🏫 Teacher Panel</h3>
+            <div class="teacher-controls">
+                <button id="startVoting" class="btn btn-success">Start Election</button>
+                <button id="stopVoting" class="btn btn-danger">Stop Election</button>
+                <button id="downloadResults" class="btn btn-secondary">Download Results</button>
+                <button id="declareWinner" class="btn btn-primary">Declare Winner</button>
+            </div>
+        </div>
+
+        <div class="error-message hidden" id="errorMessage">
+            <p id="errorText"></p>
+        </div>
+
+        <div class="loading hidden" id="loading">
+            <p>Processing transaction...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>npc

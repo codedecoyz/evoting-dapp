@@ -1,0 +1,31 @@
+{
+  "name": "cr-voting-dapp",
+  "version": "1.0.0",
+  "description": "Blockchain-based Class Representative Voting DApp",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.js --network localhost",
+    "deploy:sepolia": "npx hardhat run scripts/deploy.js --network sepolia",
+    "node": "npx hardhat node --port 8585",
+    "test": "npx hardhat test",
+    "clean": "npx hardhat clean"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum", 
+    "class-representative",
+    "student-voting",
+    "dapp",
+    "smart-contracts"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.2",
+    "hardhat": "^2.17.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
